@@ -31,7 +31,4 @@ class Router{
         echo "error 404 page not found";;
         return;
     }
-    public function getRoutes(){
-        echo "salam cv";
-    }
 }
