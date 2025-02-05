@@ -25,4 +25,8 @@ class Security {
             return false;
         }
     }
+    // xss security
+    public function xssSecurity($data){
+        return htmlspecialchars($data);
+    }
 }
