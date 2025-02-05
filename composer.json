@@ -6,7 +6,9 @@
             "email": "anashammaoui07@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/database": "^10.48"
+    },
     "autoload": {
         "psr-4": {
             "app\\": "app/"
