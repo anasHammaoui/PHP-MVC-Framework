@@ -30,7 +30,7 @@ class Validator {
         if (preg_match("/^\d+(\.\d+)?$/",$num)){
             return true;
         } else {
-            return false;
+            return false; 
         }
     }
 }

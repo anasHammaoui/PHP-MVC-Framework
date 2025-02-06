@@ -1,21 +1,19 @@
 <?php
-require "../vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule;
 
 $capsule->addConnection([
 
-   "driver" => "mysql",
+   "driver" => $_ENV["Driver"],
 
-   "host" =>"localhost",
+   "host" =>$_ENV["Host"],
 
-   "database" => "Orm",
+   "database" =>$_ENV["DbName"],
 
-   "username" => "root",
+   "username" => $_ENV["UserName"],
 
-   "password" => ""
-
+   "password" => $_ENV["Password"]
 ]);
 
 $capsule->setAsGlobal();
