@@ -13,11 +13,10 @@ class Validator {
         }
     }
     public function validateStrings($name){
-        if (preg_match("/^[a-z ,.'-]+$/i",$name)){
+        if (preg_match("/^[a-z]+$/i", $name)){
             return true;
-        } else {
-            return false;
-        }
+        } 
+        return false;
     }
     public function validatePhone($phone){
         if(preg_match("/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/",$phone)){
@@ -32,5 +31,11 @@ class Validator {
         } else {
             return false; 
         }
+    }
+    public function validatePass($pass){
+        if (preg_match("/^[A-Za-z\d]{8,}$/",$pass)){
+            return true;
+        } 
+        return false;
     }
 }

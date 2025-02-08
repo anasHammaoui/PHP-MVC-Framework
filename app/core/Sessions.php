@@ -15,8 +15,15 @@ class Sessions{
         } 
         return NULL;
     }
+    public function checkSession($key,$value){
+        if(isset($_SESSION[$key]) && $_SESSION[$key] === $value){
+            return true;
+        }
+        return false;
+    }
     public function destroy(){
         session_destroy();
         return true;
     }
+
 }

@@ -1,6 +1,5 @@
 <?php
 namespace app\core;
-
 class Router{
     private $routes = [
         "GET" => [],
@@ -12,13 +11,14 @@ class Router{
     public function add($method,$url,$controller){
         $method = strtoupper($method);
         $route = preg_replace('/\{[a-zA-Z0-9_]+\}/', '([a-zA-Z0-9_]+)',$url);
-        $this -> routes[$method][$url] = $controller;
+        $this -> routes[$method][$route] = $controller;
 
     }
     public function dispatch($uri,$method){
+        // var_dump($uri, $method, $this -> routes);die;
         $path = parse_url($uri,PHP_URL_PATH);
         foreach ($this -> routes[$method] as $url => $callback){
-            if (preg_match('#^' . $url . '$#', $uri, $matches)){
+            if (preg_match('#^' . $url . '$#', $path, $matches)){
                 array_shift($matches);
                 if (is_array($callback)){
                     $controller = new $callback[0]();
