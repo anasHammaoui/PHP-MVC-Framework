@@ -7,23 +7,17 @@ class Security {
         
     }
     // generate csrf token
-    public function csrfSecurity(){
-       if (!isset($_SERVER["csrf_token"])){
+    public function generateCsrf(){
         $token = bin2hex(random_bytes(32));
-        $_SERVER["csrf_token"] = $token;
-       } else {
-        $token = $_SERVER["csrf_token"];
-       }
-       return $token;
+        $_SESSION["csrf_token"] = $token;
     }
 
     // validate csrf token
     public function validateCsrf($gettedToken){
-        if($gettedToken === $_SERVER["csrf_token"]){
+        if(isset($_SESSION["csrf_token"]) && isset($gettedToken) && $_SESSION["csrf_token"] === $gettedToken){
             return true;
-        } else {
-            return false;
         }
+            return false;
     }
     // xss security
     public function xssSecurity($data){
